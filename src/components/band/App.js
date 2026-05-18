@@ -202,13 +202,26 @@ function Band({ isMobile, maxSpeed = 50, minSpeed = 10 }) {
         );
       });
 
-      curve.points[0].copy(j3.current.translation());
-      curve.points[1].copy(j2.current.lerped);
-      curve.points[2].copy(j1.current.lerped);
-      curve.points[3].copy(fixed.current.translation());
+      const t3 = j3.current.translation();
+      const t2 = j2.current.lerped;
+      const t1 = j1.current.lerped;
+      const tf = fixed.current.translation();
 
-      if (band.current?.geometry) {
-        band.current.geometry.setPoints(curve.getPoints(32));
+      const isValidVal = (v) => v && typeof v.x === 'number' && !isNaN(v.x) && !isNaN(v.y) && !isNaN(v.z);
+
+      if (isValidVal(t3) && isValidVal(t2) && isValidVal(t1) && isValidVal(tf)) {
+        curve.points[0].copy(t3);
+        curve.points[1].copy(t2);
+        curve.points[2].copy(t1);
+        curve.points[3].copy(tf);
+
+        if (band.current?.geometry) {
+          try {
+            band.current.geometry.setPoints(curve.getPoints(32));
+          } catch (e) {
+            // Silently catch mesh initialization warnings
+          }
+        }
       }
 
       ang.copy(card.current.angvel());

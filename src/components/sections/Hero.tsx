@@ -142,7 +142,7 @@ export default function Hero({ showApp }: HeroProps) {
               marginBottom: 24,
             }}
           >
-            in Kasaragod | Kerala
+            in Kasaragod, Kerala
           </motion.h1>
         </div>
 
