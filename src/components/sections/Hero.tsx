@@ -110,7 +110,7 @@ export default function Hero({ showApp }: HeroProps) {
               ease: [0.22, 1, 0.36, 1],
             }}
             style={{
-              fontSize: "clamp(32px, 6vw, 62px)",
+              fontSize: "clamp(28px, 5.5vw, 56px)",
               fontWeight: 800,
               lineHeight: 1.05,
               color: "var(--text-primary)",
@@ -118,7 +118,7 @@ export default function Hero({ showApp }: HeroProps) {
               marginBottom: 0,
             }}
           >
-            Web
+            Best Digital Marketer
           </motion.h1>
 
           <motion.h1
@@ -134,15 +134,15 @@ export default function Hero({ showApp }: HeroProps) {
               ease: [0.22, 1, 0.36, 1],
             }}
             style={{
-              fontSize: "clamp(32px, 6vw, 62px)",
+              fontSize: "clamp(24px, 4.5vw, 46px)",
               fontWeight: 800,
-              lineHeight: 1.05,
+              lineHeight: 1.1,
               color: "var(--text-secondary)",
               letterSpacing: "-0.03em",
               marginBottom: 24,
             }}
           >
-            Developer
+            in Kasaragod | Kerala
           </motion.h1>
         </div>
 
