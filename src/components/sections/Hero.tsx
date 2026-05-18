@@ -140,7 +140,7 @@ export default function Hero({ showApp }: HeroProps) {
               lineHeight: 1.1,
               color: "var(--text-secondary)",
               letterSpacing: "-0.03em",
-              marginBottom: 24,
+              marginBottom: 38,
               whiteSpace: "nowrap",
             }}
           >
