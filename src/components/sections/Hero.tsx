@@ -110,7 +110,7 @@ export default function Hero({ showApp }: HeroProps) {
               ease: [0.22, 1, 0.36, 1],
             }}
             style={{
-              fontSize: "clamp(20px, 4.5vw, 56px)",
+              fontSize: "clamp(18px, 3.6vw, 44px)",
               fontWeight: 800,
               lineHeight: 1.05,
               color: "var(--text-primary)",
@@ -135,7 +135,7 @@ export default function Hero({ showApp }: HeroProps) {
               ease: [0.22, 1, 0.36, 1],
             }}
             style={{
-              fontSize: "clamp(16px, 3.8vw, 42px)",
+              fontSize: "clamp(14px, 3.0vw, 32px)",
               fontWeight: 800,
               lineHeight: 1.1,
               color: "var(--text-secondary)",
