@@ -135,6 +135,8 @@ function Band({ isMobile, maxSpeed = 50, minSpeed = 10 }) {
 
   const { nodes, materials } = useGLTF(GLTF_PATH);
   const texture = useTexture(TEXTURE_PATH);
+  const cardTexture = useTexture('/assets/card_base_texture.png');
+  cardTexture.flipY = false; // Match GLTF coordinate system
   const { width, height } = useThree((state) => state.size);
 
   const [curve] = useState(
@@ -260,7 +262,7 @@ function Band({ isMobile, maxSpeed = 50, minSpeed = 10 }) {
             }}
           >
             <mesh geometry={nodes.card.geometry}>
-              <meshPhysicalMaterial {...materials.base} />
+              <meshPhysicalMaterial {...materials.base} map={cardTexture} />
             </mesh>
             <mesh geometry={nodes.clip.geometry} material={materials.metal} />
             <mesh geometry={nodes.clamp.geometry} material={materials.metal} />

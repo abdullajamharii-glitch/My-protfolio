@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import App from "@/components/band/App";
 import TextType from "@/components/band/TextType";
 
-const skills = ["HTML/CSS", "JavaScript", "React.js", "Next.js", "Tailwind"];
+const skills = ["Web Development", "SEO", "SEM", "SMM", "Tailwind"];
 
 type HeroProps = {
   showApp: boolean;
@@ -118,7 +118,7 @@ export default function Hero({ showApp }: HeroProps) {
               marginBottom: 0,
             }}
           >
-            Frontend
+            Web
           </motion.h1>
 
           <motion.h1
@@ -162,7 +162,7 @@ export default function Hero({ showApp }: HeroProps) {
             }}
           >
             <TextType
-              text={["Frontend Developer", "UI/UX Enthusiast", "Happy coding!"]}
+              text={["Best Digital Marketer in Kasaragod, Kerala", "Web Developer", "SEO Specialist"]}
               typingSpeed={75}
               pauseDuration={1500}
               showCursor
@@ -197,9 +197,8 @@ export default function Hero({ showApp }: HeroProps) {
               textWrap: "pretty",
             }}
           >
-            Building modern, responsive, and visually elegant websites.
-            Turning ideas and designs into engaging digital experiences that
-            are intuitive and easy to use.
+            Building high-performance, SEO-optimized websites and designing data-driven digital marketing campaigns.
+            Helping brands rank higher, engage audiences, and scale their online presence.
           </p>
         </motion.div>
 

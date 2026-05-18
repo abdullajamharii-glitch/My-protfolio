@@ -196,10 +196,10 @@ export default function About() {
                 maxWidth: isMobile ? "100%" : "490px",
               }}
             >
-              A passionate Frontend Developer focused on crafting clean,
-              responsive, and visually compelling websites. I love turning
-              ideas into polished digital experiences that are both beautiful
-              and easy to use.
+              A passionate Web Developer and SEO Specialist focused on crafting clean,
+              responsive websites and driving digital growth. I love combining
+              technical web development with strategic marketing to build engaging online
+              experiences that rank high and convert.
             </motion.p>
 
             {/* QUOTE */}
@@ -227,8 +227,7 @@ export default function About() {
                 width: "fit-content",
               }}
             >
-              “Turning ideas into clean, modern, and meaningful digital
-              experiences.”
+              “Driving digital growth by bridging the gap between clean web development and powerful SEO strategy.”
             </motion.div>
 
             {/* BUTTONS */}
