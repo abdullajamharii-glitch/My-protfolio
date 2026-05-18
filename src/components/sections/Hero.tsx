@@ -110,12 +110,13 @@ export default function Hero({ showApp }: HeroProps) {
               ease: [0.22, 1, 0.36, 1],
             }}
             style={{
-              fontSize: "clamp(28px, 5.5vw, 56px)",
+              fontSize: "clamp(20px, 4.5vw, 56px)",
               fontWeight: 800,
               lineHeight: 1.05,
               color: "var(--text-primary)",
               letterSpacing: "-0.03em",
               marginBottom: 0,
+              whiteSpace: "nowrap",
             }}
           >
             Best Digital Marketer
@@ -134,12 +135,13 @@ export default function Hero({ showApp }: HeroProps) {
               ease: [0.22, 1, 0.36, 1],
             }}
             style={{
-              fontSize: "clamp(24px, 4.5vw, 46px)",
+              fontSize: "clamp(16px, 3.8vw, 42px)",
               fontWeight: 800,
               lineHeight: 1.1,
               color: "var(--text-secondary)",
               letterSpacing: "-0.03em",
               marginBottom: 24,
+              whiteSpace: "nowrap",
             }}
           >
             in Kasaragod, Kerala
