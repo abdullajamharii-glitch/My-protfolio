@@ -8,6 +8,11 @@ export interface Project {
   key_features: string
   image_url: string
   image_urls: string[]
+  g_business_rating?: string
+  g_business_address?: string
+  g_business_phone?: string
+  g_business_map_url?: string
+  g_business_desc?: string
   created_at?: string
   updated_at?: string
 }
@@ -20,9 +25,14 @@ export const staticProjects: Project[] = [
     live_url: 'https://www.rajavbeachresort.com',
     github_url: null,
     technologies: 'React, Next.js, Tailwind CSS, Framer Motion, TypeScript, Smooth Scroll',
-    key_features: 'Direct Beach Access Booking, Beachfront Infinity Pool Showcase, Premium Jacuzzi Room Details, Event and Wedding Hall Booking Info, Fully Responsive Layout, Smooth Transitions & Micro-interactions',
+    key_features: 'Direct Cherai Beachfront Access, Stunning Infinity Pool with Sea View, Signature Jacuzzi Rooms & Custom Booking, Event & Party Hall Reservation, Beachside Cafe Experience, Premium Vacation Getaways',
     image_url: '/assets/rajav_beach_resort.png',
     image_urls: ['/assets/rajav_beach_resort.png'],
+    g_business_rating: '4.5/5',
+    g_business_address: '45RH+FF7, Cherai Beach - Munambam Rd, Cherai, Kochi, Kerala 683514, India',
+    g_business_phone: '+91 80155 62576',
+    g_business_map_url: 'https://maps.google.com/?q=Rajav+Beach+Resort+Cherai',
+    g_business_desc: 'Popular beachfront resort in Cherai known for its infinity pool, luxury jacuzzi rooms, and direct access to Cherai Beach.'
   },
   {
     id: 'al-beraimi-cafeteria',
@@ -31,8 +41,13 @@ export const staticProjects: Project[] = [
     live_url: 'https://albiraimi.netlify.app/',
     github_url: null,
     technologies: 'Next.js, React, Tailwind CSS, Framer Motion, Lucide Icons, WhatsApp Integration, SEO Optimization',
-    key_features: 'Interactive Menu Showcase, Direct WhatsApp Order Integration, Multi-branch Locations Map, Delivery Platform Links (Talabat, Zomato, Deliveroo, Noon), Custom Reviews Section, Fast-loading and SEO-Optimized Pages',
+    key_features: 'Legendary OG Shawaya (Grilled Chicken), Classic Chicken Shawarma & Wraps, Late Night Dining (11 AM - 4 AM), Seamless WhatsApp Order System, Multi-branch Presence (Al Jubail & Al Qasimia), Online Delivery Platform Integrations',
     image_url: '/assets/al_beraimi_cafeteria.png',
     image_urls: ['/assets/al_beraimi_cafeteria.png'],
+    g_business_rating: '4.3/5',
+    g_business_address: '28, Qais Bin Abi Sa\'Asa\'Ah Street, Al Jubail, Al Qasimiah, Sharjah, United Arab Emirates',
+    g_business_phone: '+971 6 569 1925',
+    g_business_map_url: 'https://maps.google.com/?q=Al+Beraimi+Cafeteria+Sharjah',
+    g_business_desc: 'Sharjah\'s famous late-night cafeteria serving authentic Arabic grilled chicken, shawarma, and fresh juices since 1994.'
   }
 ]

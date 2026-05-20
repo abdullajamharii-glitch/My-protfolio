@@ -19,6 +19,9 @@ import {
   Layers,
   X,
   Box,
+  MapPin,
+  Phone,
+  Star,
 } from 'lucide-react'
 
 export default function PortfolioDetailPage() {
@@ -482,6 +485,62 @@ export default function PortfolioDetailPage() {
                 ))}
               </ul>
             </motion.div>
+
+            {/* GOOGLE BUSINESS DETAILS */}
+            {project.g_business_rating && (
+              <motion.div
+                initial={{ opacity: 0, y: 35 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.9,
+                  delay: 0.3,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                whileHover={{ y: -2 }}
+                className="bg-gradient-to-br from-[#101010] to-[#171717] border border-white/10 rounded-3xl p-5 mt-5"
+              >
+                <div className="flex items-center gap-2 mb-4">
+                  <Star size={14} className="text-amber-400 fill-amber-400" />
+                  <p className="text-sm font-semibold">Google Business Profile</p>
+                  <span className="ml-auto text-xs bg-amber-400/10 text-amber-400 px-2 py-0.5 rounded-full font-medium">
+                    {project.g_business_rating} Rating
+                  </span>
+                </div>
+
+                <p className="text-[12px] leading-relaxed text-white/70 mb-4 italic">
+                  "{project.g_business_desc}"
+                </p>
+
+                <div className="space-y-2.5 text-[11px] text-white/60">
+                  {project.g_business_address && (
+                    <div className="flex gap-2 items-start">
+                      <MapPin size={13} className="text-white/40 shrink-0 mt-0.5" />
+                      <span>{project.g_business_address}</span>
+                    </div>
+                  )}
+                  {project.g_business_phone && (
+                    <div className="flex gap-2 items-center">
+                      <Phone size={13} className="text-white/40 shrink-0" />
+                      <a href={`tel:${project.g_business_phone.replace(/\s+/g, '')}`} className="hover:text-white transition">
+                        {project.g_business_phone}
+                      </a>
+                    </div>
+                  )}
+                </div>
+
+                {project.g_business_map_url && (
+                  <a
+                    href={project.g_business_map_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 flex items-center justify-center gap-2 w-full py-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 text-xs transition duration-300"
+                  >
+                    <ExternalLink size={12} />
+                    View on Google Maps
+                  </a>
+                )}
+              </motion.div>
+            )}
           </motion.div>
         </div>
       </motion.div>

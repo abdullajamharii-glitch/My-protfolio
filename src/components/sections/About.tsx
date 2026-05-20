@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { motion, Variants } from "framer-motion";
 import { Code, Award, Globe, FileText, ArrowUpRight } from "lucide-react";
 import { supabase } from "@/lib/supabase";
+import { staticProjects } from "@/lib/staticProjects";
 
 /* ================== ANIMATION ================== */
 
@@ -76,18 +77,30 @@ export default function About() {
 
   const fetchStats = async () => {
     try {
-      const { count: projects } = await supabase
+      const { data: dbProjects } = await supabase
         .from("projects")
-        .select("*", { count: "exact", head: true });
+        .select("title, live_url");
 
       const { count: certificates } = await supabase
         .from("certificates")
         .select("*", { count: "exact", head: true });
 
-      setProjectCount(projects || 0);
+      const merged = [...staticProjects];
+      if (dbProjects) {
+        dbProjects.forEach((dbProj: any) => {
+          const exists = merged.some(
+            (sp) => sp.live_url === dbProj.live_url || sp.title.toLowerCase() === dbProj.title.toLowerCase()
+          );
+          if (!exists) {
+            merged.push(dbProj);
+          }
+        });
+      }
+
+      setProjectCount(merged.length);
       setCertificateCount(certificates || 0);
     } catch {
-      setProjectCount(0);
+      setProjectCount(staticProjects.length);
       setCertificateCount(0);
     }
   };
