@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { supabase } from '@/lib/supabase'
+import { staticProjects } from '@/lib/staticProjects'
 import {
   ArrowLeft,
   ChevronLeft,
@@ -43,14 +44,24 @@ export default function PortfolioDetailPage() {
   }, [])
 
   const fetchProject = async () => {
-    const { data } = await supabase
-      .from('projects')
-      .select('*')
-      .eq('id', id)
-      .single()
+    const staticProj = staticProjects.find((p) => p.id === id)
+    if (staticProj) {
+      setProject(staticProj)
+      return
+    }
 
-    if (data) {
-      setProject(data)
+    try {
+      const { data } = await supabase
+        .from('projects')
+        .select('*')
+        .eq('id', id)
+        .single()
+
+      if (data) {
+        setProject(data)
+      }
+    } catch {
+      // ignore
     }
   }
 

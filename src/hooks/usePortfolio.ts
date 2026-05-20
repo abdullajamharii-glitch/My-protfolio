@@ -6,6 +6,7 @@ import {
   fetchProjects,
   fetchTechStacks,
 } from '@/lib/portfolioService'
+import { staticProjects } from '@/lib/staticProjects'
 
 export default function usePortfolio() {
   const [projects, setProjects] = useState<any[]>([])
@@ -37,7 +38,20 @@ export default function usePortfolio() {
       )
 
     if (cachedProjects) {
-      setProjects(JSON.parse(cachedProjects))
+      const parsed = JSON.parse(cachedProjects)
+      // Merge cached projects with static projects to ensure they are immediately present
+      const merged = [...staticProjects]
+      parsed.forEach((dbProj: any) => {
+        const exists = merged.some(
+          (sp) => sp.live_url === dbProj.live_url || sp.title.toLowerCase() === dbProj.title.toLowerCase()
+        )
+        if (!exists) {
+          merged.push(dbProj)
+        }
+      })
+      setProjects(merged)
+    } else {
+      setProjects(staticProjects)
     }
 
     if (cachedCertificates) {
@@ -63,13 +77,25 @@ export default function usePortfolio() {
         fetchTechStacks(),
       ])
 
-      setProjects(projectsData || [])
+      const dbProjects = projectsData || []
+      const mergedProjects = [...staticProjects]
+
+      dbProjects.forEach((dbProj) => {
+        const exists = mergedProjects.some(
+          (sp) => sp.live_url === dbProj.live_url || sp.title.toLowerCase() === dbProj.title.toLowerCase()
+        )
+        if (!exists) {
+          mergedProjects.push(dbProj)
+        }
+      })
+
+      setProjects(mergedProjects)
       setCertificates(certificatesData || [])
       setTechStacks(techStacksData || [])
 
       sessionStorage.setItem(
         'portfolioProjects',
-        JSON.stringify(projectsData || [])
+        JSON.stringify(mergedProjects)
       )
       sessionStorage.setItem(
         'portfolioCertificates',
@@ -80,8 +106,8 @@ export default function usePortfolio() {
         JSON.stringify(techStacksData || [])
       )
     } catch {
-      // Supabase not configured — show empty sections
-      setProjects([])
+      // Supabase not configured — show static projects
+      setProjects(staticProjects)
       setCertificates([])
       setTechStacks([])
     }
