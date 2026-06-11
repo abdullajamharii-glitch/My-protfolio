@@ -148,6 +148,8 @@ function Band({ isMobile, maxSpeed = 50, minSpeed = 10 }) {
   const texture = useTexture(TEXTURE_PATH);
   const cardTexture = useTexture('/assets/card_base_texture.png');
   cardTexture.flipY = false; // Match GLTF coordinate system
+  cardTexture.repeat.set(1, 0.96);
+  cardTexture.offset.set(0, 0.02);
   const { width, height } = useThree((state) => state.size);
 
   const [curve] = useState(
