@@ -29,6 +29,8 @@ useTexture.preload(TEXTURE_PATH);
 
 export default function App() {
   const [isMobile, setIsMobile] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const [renderCanvas, setRenderCanvas] = useState(true);
 
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < 768);
@@ -36,6 +38,28 @@ export default function App() {
     window.addEventListener('resize', check);
     return () => window.removeEventListener('resize', check);
   }, []);
+
+  useEffect(() => {
+    if (isMobile) {
+      const fadeTimer = setTimeout(() => {
+        setVisible(false);
+      }, 6000);
+
+      const unmountTimer = setTimeout(() => {
+        setRenderCanvas(false);
+      }, 7000); // 6s + 1s fade out duration
+
+      return () => {
+        clearTimeout(fadeTimer);
+        clearTimeout(unmountTimer);
+      };
+    } else {
+      setVisible(true);
+      setRenderCanvas(true);
+    }
+  }, [isMobile]);
+
+  if (!renderCanvas) return null;
 
   return (
     <div
@@ -47,6 +71,8 @@ export default function App() {
         height: '100%',
         pointerEvents: 'none',
         zIndex: 1,
+        transition: 'opacity 1s ease-in-out',
+        opacity: visible ? 1 : 0,
       }}
     >
       <Canvas
@@ -153,9 +179,9 @@ function Band({ isMobile, maxSpeed = 50, minSpeed = 10 }) {
   const [hovered, hover] = useState(false);
   const canDrag = !isMobile;
 
-  useRopeJoint(fixed, j1, [[0, 0, 0], [0, 0, 0], 1]);
-  useRopeJoint(j1, j2, [[0, 0, 0], [0, 0, 0], 1]);
-  useRopeJoint(j2, j3, [[0, 0, 0], [0, 0, 0], 1]);
+  useRopeJoint(fixed, j1, [[0, 0, 0], [0, 0, 0], isMobile ? 0.35 : 1]);
+  useRopeJoint(j1, j2, [[0, 0, 0], [0, 0, 0], isMobile ? 0.35 : 1]);
+  useRopeJoint(j2, j3, [[0, 0, 0], [0, 0, 0], isMobile ? 0.35 : 1]);
   useSphericalJoint(j3, card, [[0, 0, 0], [0, isMobile ? 0.9 : 1.45, 0]]);
 
   useEffect(() => {
@@ -242,14 +268,14 @@ function Band({ isMobile, maxSpeed = 50, minSpeed = 10 }) {
 
   return (
     <>
-      <group position={isMobile ? [0, 4.4, 0] : [3, 4, 0]}>
+      <group position={isMobile ? [1.1, 4.0, 0] : [3, 4, 0]}>
         <RigidBody ref={fixed} {...segmentProps} type="fixed" />
-        <RigidBody position={[0.5, 0, 0]} ref={j1} {...segmentProps}><BallCollider args={[0.1]} /></RigidBody>
-        <RigidBody position={[1, 0, 0]} ref={j2} {...segmentProps}><BallCollider args={[0.1]} /></RigidBody>
-        <RigidBody position={[1.5, 0, 0]} ref={j3} {...segmentProps}><BallCollider args={[0.1]} /></RigidBody>
+        <RigidBody position={isMobile ? [0.17, 0, 0] : [0.5, 0, 0]} ref={j1} {...segmentProps}><BallCollider args={[0.1]} /></RigidBody>
+        <RigidBody position={isMobile ? [0.35, 0, 0] : [1, 0, 0]} ref={j2} {...segmentProps}><BallCollider args={[0.1]} /></RigidBody>
+        <RigidBody position={isMobile ? [0.52, 0, 0] : [1.5, 0, 0]} ref={j3} {...segmentProps}><BallCollider args={[0.1]} /></RigidBody>
 
         <RigidBody
-          position={[2, 0, 0]}
+          position={isMobile ? [0.7, 0, 0] : [2, 0, 0]}
           ref={card}
           {...segmentProps}
           type={dragged ? 'kinematicPosition' : 'dynamic'}
