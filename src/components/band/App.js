@@ -40,23 +40,8 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    if (isMobile) {
-      const fadeTimer = setTimeout(() => {
-        setVisible(false);
-      }, 6000);
-
-      const unmountTimer = setTimeout(() => {
-        setRenderCanvas(false);
-      }, 7000); // 6s + 1s fade out duration
-
-      return () => {
-        clearTimeout(fadeTimer);
-        clearTimeout(unmountTimer);
-      };
-    } else {
-      setVisible(true);
-      setRenderCanvas(true);
-    }
+    setVisible(true);
+    setRenderCanvas(true);
   }, [isMobile]);
 
   if (!renderCanvas) return null;
