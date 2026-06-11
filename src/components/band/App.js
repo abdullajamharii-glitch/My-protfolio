@@ -224,13 +224,7 @@ function Band({ isMobile, maxSpeed = 50, minSpeed = 10 }) {
         }
       }
 
-      // Ambient sway force to make it feel alive
-      if (!dragged) {
-        const time = state.clock.getElapsedTime();
-        const windForceX = Math.sin(time * 1.5) * 0.12;
-        const windForceZ = Math.cos(time * 1.0) * 0.08;
-        card.current.addForce({ x: windForceX, y: 0, z: windForceZ }, true);
-      }
+
 
       ang.copy(card.current.angvel());
       rot.copy(card.current.rotation());
