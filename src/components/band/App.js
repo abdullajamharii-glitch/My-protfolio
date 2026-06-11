@@ -51,7 +51,7 @@ export default function App() {
     >
       <Canvas
         gl={{ alpha: true }}
-        camera={{ position: [0, 0, 13], fov: 25 }}
+        camera={{ position: isMobile ? [0, -0.4, 14] : [0, 0, 13], fov: isMobile ? 28 : 25 }}
         style={{
           background: 'transparent',
           width: '100%',
@@ -106,8 +106,8 @@ function Scene({ isMobile }) {
       gravity={[0, -40, 0]}
       timeStep={1 / 60}
     >
-      {/* hanya desktop */}
-      {!isMobile && <Band isMobile={isMobile} />}
+      {/* render on both mobile and desktop */}
+      <Band isMobile={isMobile} />
     </Physics>
   );
 }
@@ -224,6 +224,14 @@ function Band({ isMobile, maxSpeed = 50, minSpeed = 10 }) {
         }
       }
 
+      // Ambient sway force to make it feel alive
+      if (!dragged) {
+        const time = state.clock.getElapsedTime();
+        const windForceX = Math.sin(time * 1.5) * 0.12;
+        const windForceZ = Math.cos(time * 1.0) * 0.08;
+        card.current.addForce({ x: windForceX, y: 0, z: windForceZ }, true);
+      }
+
       ang.copy(card.current.angvel());
       rot.copy(card.current.rotation());
 
@@ -240,7 +248,7 @@ function Band({ isMobile, maxSpeed = 50, minSpeed = 10 }) {
 
   return (
     <>
-      <group position={[3, 4, 0]}>
+      <group position={isMobile ? [0, 4.4, 0] : [3, 4, 0]}>
         <RigidBody ref={fixed} {...segmentProps} type="fixed" />
         <RigidBody position={[0.5, 0, 0]} ref={j1} {...segmentProps}><BallCollider args={[0.1]} /></RigidBody>
         <RigidBody position={[1, 0, 0]} ref={j2} {...segmentProps}><BallCollider args={[0.1]} /></RigidBody>

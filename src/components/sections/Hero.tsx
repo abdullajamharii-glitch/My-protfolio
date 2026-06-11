@@ -13,6 +13,14 @@ type HeroProps = {
 
 export default function Hero({ showApp }: HeroProps) {
   const [startAnim, setStartAnim] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   useEffect(() => {
     const heroPlayed = sessionStorage.getItem("heroPlayed");
@@ -41,14 +49,16 @@ export default function Hero({ showApp }: HeroProps) {
   return (
     <section
       id="home"
-      className="px-6 md:pl-[120px] md:pr-[60px]"
       style={{
         minHeight: "100vh",
         display: "flex",
         alignItems: "center",
-        justifyContent: "flex-start",
+        justifyContent: isMobile ? "center" : "flex-start",
         position: "relative",
         overflow: "hidden",
+        paddingLeft: isMobile ? "24px" : "120px",
+        paddingRight: isMobile ? "24px" : "60px",
+        paddingTop: isMobile ? "40px" : "0",
       }}
     >
       {/* APP LAYER */}
@@ -65,11 +75,12 @@ export default function Hero({ showApp }: HeroProps) {
 
       {/* TEXT */}
       <div
-        className="md:max-w-[600px]"
         style={{
           width: "100%",
+          maxWidth: isMobile ? "100%" : "600px",
           position: "relative",
           zIndex: 5,
+          textAlign: isMobile ? "center" : "left",
         }}
       >
         {/* LABEL */}
@@ -110,13 +121,13 @@ export default function Hero({ showApp }: HeroProps) {
               ease: [0.22, 1, 0.36, 1],
             }}
             style={{
-              fontSize: "clamp(18px, 3.6vw, 44px)",
+              fontSize: isMobile ? "clamp(24px, 7vw, 36px)" : "clamp(18px, 3.6vw, 44px)",
               fontWeight: 800,
               lineHeight: 1.05,
               color: "var(--text-primary)",
               letterSpacing: "-0.03em",
               marginBottom: 0,
-              whiteSpace: "nowrap",
+              whiteSpace: isMobile ? "normal" : "nowrap",
             }}
           >
             Best Digital Marketer
@@ -135,13 +146,13 @@ export default function Hero({ showApp }: HeroProps) {
               ease: [0.22, 1, 0.36, 1],
             }}
             style={{
-              fontSize: "clamp(14px, 3.0vw, 32px)",
+              fontSize: isMobile ? "clamp(18px, 5vw, 28px)" : "clamp(14px, 3.0vw, 32px)",
               fontWeight: 800,
               lineHeight: 1.1,
               color: "var(--text-secondary)",
               letterSpacing: "-0.03em",
               marginBottom: 38,
-              whiteSpace: "nowrap",
+              whiteSpace: isMobile ? "normal" : "nowrap",
             }}
           >
             in Kasaragod, Kerala
@@ -187,7 +198,7 @@ export default function Hero({ showApp }: HeroProps) {
           style={{
             marginBottom: 28,
             width: "100%",
-            maxWidth: 460, // batas lebar biar jadi 3 baris
+            maxWidth: isMobile ? "100%" : 460,
           }}
         >
           <p
@@ -222,6 +233,7 @@ export default function Hero({ showApp }: HeroProps) {
             gap: 8,
             flexWrap: "wrap",
             marginBottom: 28,
+            justifyContent: isMobile ? "center" : "flex-start",
           }}
         >
           {skills.map((skill) => (
@@ -256,6 +268,7 @@ export default function Hero({ showApp }: HeroProps) {
             display: "flex",
             flexDirection: "column",
             gap: 6,
+            alignItems: isMobile ? "center" : "flex-start",
           }}
         >
           <span
