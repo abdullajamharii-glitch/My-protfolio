@@ -53,7 +53,7 @@ export default function Hero({ showApp }: HeroProps) {
         minHeight: "100vh",
         display: "flex",
         alignItems: "center",
-        justifyContent: isMobile ? "center" : "flex-start",
+        justifyContent: "flex-start",
         position: "relative",
         overflow: "hidden",
         paddingLeft: isMobile ? "24px" : "120px",
@@ -80,7 +80,7 @@ export default function Hero({ showApp }: HeroProps) {
           maxWidth: isMobile ? "100%" : "600px",
           position: "relative",
           zIndex: 5,
-          textAlign: isMobile ? "center" : "left",
+          textAlign: "left",
         }}
       >
         {/* LABEL */}
@@ -233,7 +233,7 @@ export default function Hero({ showApp }: HeroProps) {
             gap: 8,
             flexWrap: "wrap",
             marginBottom: 28,
-            justifyContent: isMobile ? "center" : "flex-start",
+            justifyContent: "flex-start",
           }}
         >
           {skills.map((skill) => (
@@ -268,7 +268,7 @@ export default function Hero({ showApp }: HeroProps) {
             display: "flex",
             flexDirection: "column",
             gap: 6,
-            alignItems: isMobile ? "center" : "flex-start",
+            alignItems: "flex-start",
           }}
         >
           <span
