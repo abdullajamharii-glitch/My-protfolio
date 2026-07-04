@@ -87,10 +87,6 @@ export default function ContactSection() {
           <CommentsSection />
         </div>
       </div>
- {/* COPYRIGHT */}
-<div className="mt-20 text-center text-xs text-white/35">
-  © 2026 Abdulla — All rights reserved.
-</div>
     </section>
   )
 }

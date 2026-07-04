@@ -199,7 +199,7 @@ export default function WelcomeScreen() {
     color: 'rgba(255,255,255,0.7)',
   }}
 >
-  www.abdulla.vercel.app
+  www.abdullajamhari.com
 </motion.div>
       </motion.div>
     </div>

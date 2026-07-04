@@ -107,7 +107,7 @@ export default function PortfolioShowcase() {
             {[
               'projects',
               'certificates',
-              'techstack',
+              'posters',
             ].map((tab) => (
               <button
                 key={tab}
@@ -128,7 +128,7 @@ export default function PortfolioShowcase() {
                   ? 'Projects'
                   : tab === 'certificates'
                   ? 'Certificates'
-                  : 'Tech Stack'}
+                  : 'Posters'}
               </button>
             ))}
           </div>
@@ -192,6 +192,7 @@ export default function PortfolioShowcase() {
                               image={item.image_url}
                               live_url={item.live_url}
                               id={item.id}
+                              private={item.private}
                             />
                           </motion.div>
                         )
@@ -317,56 +318,58 @@ export default function PortfolioShowcase() {
               </div>
             )}
 
-            {/* TECH STACK */}
-            {/* TECH STACK */}
-{activeTab === 'techstack' && (
-  <div className="min-h-[360px] flex justify-center">
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5 max-w-5xl w-full">
-      {!loading &&
-        techStacks?.map((item, index) => (
-          <motion.div
-            key={item.id}
-            initial={{
-              opacity: 0,
-              scale: 0.9,
-              y: 20,
-            }}
-            whileInView={{
-              opacity: 1,
-              scale: 1,
-              y: 0,
-            }}
-            transition={{
-              duration: 0.45,
-              delay: index * 0.04,
-            }}
-            whileHover={{
-              y: -5,
-              scale: 1.04,
-            }}
-            className="group rounded-[24px] border border-white/10 bg-white/[0.04] backdrop-blur-xl flex flex-col items-center justify-center gap-3 h-[125px] w-[125px] mx-auto"
-          >
-            <div className="relative flex items-center justify-center">
-              {/* GLOW */}
-              <div className="absolute w-[70px] h-[70px] rounded-full bg-white/20 blur-2xl opacity-0 group-hover:opacity-100 transition duration-500" />
-
-              {item.logo_url ? (
+            {/* POSTERS */}
+{activeTab === 'posters' && (
+  <div className="min-h-[360px]">
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5">
+      {!loading && techStacks && techStacks.length > 0
+        ? techStacks.map((item: any, index: number) => (
+            <motion.div
+              key={item.id}
+              initial={{ opacity: 0, scale: 0.92, y: 20 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.05 }}
+              whileHover={{ y: -5, scale: 1.02 }}
+              className="group cursor-pointer rounded-[22px] border border-white/10 bg-white/[0.04] backdrop-blur-xl overflow-hidden"
+            >
+              <div className="h-52 overflow-hidden">
                 <img
-                  src={item.logo_url}
-                  alt={item.name}
-                  className="relative z-10 w-[56px] h-[56px] object-contain"
+                  src={item.logo_url || item.image_url}
+                  alt={item.name || item.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                 />
-              ) : (
-                <div className="relative z-10 w-[56px] h-[56px] rounded-2xl bg-white/10" />
-              )}
-            </div>
-
-            <p className="text-[11px] text-white/80 text-center leading-tight px-2 line-clamp-1">
-              {item.name}
-            </p>
-          </motion.div>
-        ))}
+              </div>
+              <div className="p-3 text-center">
+                <p className="text-[12px] text-white/75 font-medium truncate">{item.name || item.title}</p>
+              </div>
+            </motion.div>
+          ))
+        : (
+          // Placeholder cards when no data
+          Array.from({ length: 6 }).map((_, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.92, y: 20 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.05 }}
+              className="rounded-[22px] border border-white/10 bg-white/[0.04] backdrop-blur-xl overflow-hidden"
+            >
+              <div className="h-52 bg-white/[0.03] flex items-center justify-center">
+                <span className="text-white/20 text-xs">Poster {index + 1}</span>
+              </div>
+              <div className="p-3 text-center">
+                <p className="text-[12px] text-white/30 font-medium">Coming Soon</p>
+              </div>
+            </motion.div>
+          ))
+        )
+      }
     </div>
+    {(!loading && (!techStacks || techStacks.length === 0)) && (
+      <div className="text-center mt-10">
+        <p className="text-white/30 text-sm">Posters will be added soon. Check back later!</p>
+      </div>
+    )}
   </div>
 )}
           </motion.div>

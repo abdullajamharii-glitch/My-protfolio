@@ -14,6 +14,7 @@ type Props = {
   id?: string
   image?: string
   live_url?: string
+  private?: boolean
 }
 
 export default function PortfolioCard({
@@ -23,6 +24,7 @@ export default function PortfolioCard({
   id,
   image,
   live_url,
+  private: isPrivate,
 }: Props) {
   const router = useRouter()
 
@@ -65,7 +67,11 @@ export default function PortfolioCard({
       </p>
 
       <div className="mt-auto pt-4 flex items-center justify-between">
-        {live_url ? (
+        {isPrivate ? (
+          <span className="flex items-center gap-1.5 text-[12px] text-amber-400/80 bg-amber-500/10 border border-amber-500/20 rounded-full px-3 py-1">
+            🔒 Private
+          </span>
+        ) : live_url ? (
           <a
             href={live_url}
             target="_blank"

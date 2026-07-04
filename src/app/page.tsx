@@ -8,8 +8,12 @@ import Navbar from '@/components/ui/Navbar'
 import Hero from '@/components/sections/Hero'
 import About from '@/components/sections/About'
 import PortfolioShowcase from '@/components/sections/PortfolioShowcase'
+import Timeline from '@/components/sections/Timeline'
+import Blogs from '@/components/sections/Blogs'
 import ContactSection from '@/components/sections/contact/ContactSection'
+import Footer from '@/components/sections/Footer'
 import WelcomeScreen from '@/components/WelcomeScreen'
+import WhatsAppButton from '@/components/WhatsAppButton'
 
 import { hasPlayedIntro, setIntroPlayed } from '@/lib/introState'
 
@@ -77,8 +81,14 @@ useEffect(() => {
         <Hero showApp={showApp} />
         <About />
         <PortfolioShowcase />
+        <Timeline />
+        <Blogs />
         <ContactSection />
+        <Footer />
       </div>
+
+      {/* WHATSAPP FLOAT */}
+      <WhatsAppButton />
 
       <AnimatePresence>
         {showWelcome && (

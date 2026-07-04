@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import App from "@/components/band/App";
 import TextType from "@/components/band/TextType";
 
-const skills = ["Web Development", "SEO", "SEM", "SMM", "Tailwind"];
+const skills = ["Web Development", "SEO", "SEM", "SMM", "App Development"];
 
 type HeroProps = {
   showApp: boolean;

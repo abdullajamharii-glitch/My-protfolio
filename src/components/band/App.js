@@ -67,7 +67,7 @@ export default function App() {
           background: 'transparent',
           width: '100%',
           height: '100%',
-          pointerEvents: isMobile ? 'none' : 'auto', // ✅ fix drag desktop
+          pointerEvents: isMobile ? 'none' : 'auto',
         }}
       >
         <ambientLight intensity={Math.PI} />
@@ -147,7 +147,7 @@ function Band({ isMobile, maxSpeed = 50, minSpeed = 10 }) {
   const { nodes, materials } = useGLTF(GLTF_PATH);
   const texture = useTexture(TEXTURE_PATH);
   const cardTexture = useTexture('/assets/card_base_texture.png');
-  cardTexture.flipY = false; // Match GLTF coordinate system
+  cardTexture.flipY = false;
   cardTexture.repeat.set(1, 0.96);
   cardTexture.offset.set(0, 0.02);
   const { width, height } = useThree((state) => state.size);
@@ -237,8 +237,6 @@ function Band({ isMobile, maxSpeed = 50, minSpeed = 10 }) {
         }
       }
 
-
-
       ang.copy(card.current.angvel());
       rot.copy(card.current.rotation());
 
@@ -309,7 +307,7 @@ function Band({ isMobile, maxSpeed = 50, minSpeed = 10 }) {
           useMap
           map={texture}
           repeat={[-4, 1]}
-          lineWidth={1}
+          lineWidth={isMobile ? 0.6 : 1}
         />
       </mesh>
     </>

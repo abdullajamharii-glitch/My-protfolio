@@ -286,7 +286,12 @@ export default function PortfolioDetailPage() {
               }}
               className="flex flex-wrap gap-3 mb-7"
             >
-              {project.live_url ? (
+              {project.private ? (
+                <div className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-amber-500/10 border border-amber-500/25 text-amber-400 text-sm">
+                  <span>🔒</span>
+                  Private Project — Internal Use Only
+                </div>
+              ) : project.live_url ? (
                 <a
                   href={project.live_url}
                   target="_blank"
@@ -487,7 +492,7 @@ export default function PortfolioDetailPage() {
             </motion.div>
 
             {/* GOOGLE BUSINESS DETAILS */}
-            {project.g_business_rating && (
+            {!project.private && project.g_business_rating && (
               <motion.div
                 initial={{ opacity: 0, y: 35 }}
                 animate={{ opacity: 1, y: 0 }}

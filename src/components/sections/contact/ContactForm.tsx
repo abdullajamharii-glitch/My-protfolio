@@ -12,10 +12,10 @@ import {
 import {
   FaLinkedinIn,
   FaInstagram,
-  FaGithub,
-  FaYoutube,
-  FaTiktok,
-} from 'react-icons/fa'
+  FaPinterestP,
+  FaXTwitter,
+} from 'react-icons/fa6'
+import { FaEnvelope } from 'react-icons/fa'
 
 const smoothEase: [number, number, number, number] = [
   0.22,
@@ -42,27 +42,27 @@ const fieldVariants: Variants = {
 const socialLinks = [
   {
     title: 'Instagram',
-    user: '@instagram',
+    user: '@abdulla_chembarikka_',
     icon: FaInstagram,
-    link: 'https://www.instagram.com/itsmeikky_12?igsh=ZHFpMTJ1bHQzeDAx',
+    link: 'https://www.instagram.com/abdulla_chembarikka_/',
   },
   {
-    title: 'Youtube',
-    user: '@youtube',
-    icon: FaYoutube,
-    link: 'https://youtube.com/@zettaajah?si=QRjJGD4zCQG8aIHX',
+    title: 'Pinterest',
+    user: '@pinterest',
+    icon: FaPinterestP,
+    link: 'https://pin.it/1ftO7kiFh',
   },
   {
-    title: 'Github',
-    user: '@github',
-    icon: FaGithub,
-    link: 'https://github.com/RifqiMuhammadAliya12',
+    title: 'Email',
+    user: 'abdullajamharii@gmail.com',
+    icon: FaEnvelope,
+    link: 'mailto:abdullajamharii@gmail.com',
   },
   {
-    title: 'TikTok',
-    user: '@tiktok',
-    icon: FaTiktok,
-    link: 'https://www.tiktok.com/@itsme.ikky_?_r=1&_t=ZS-95yAYr5PHUb',
+    title: 'X (Twitter)',
+    user: '@x',
+    icon: FaXTwitter,
+    link: 'https://x.com/AbdullaChembar1',
   },
 ]
 
@@ -151,22 +151,28 @@ export default function ContactForm() {
         </motion.div>
 
         {/* BUTTON */}
-        <motion.button
+        <motion.a
+          href="mailto:abdullajamharii@gmail.com?subject=Hello%20Abdulla%20%E2%80%94%20Let%27s%20Connect&body=Hi%20Abdulla%2C%0A%0AI%20came%20across%20your%20portfolio%20and%20would%20love%20to%20connect.%0A%0A"
+          rel="noopener noreferrer"
           variants={fieldVariants}
           initial="hidden"
           whileInView="show"
           viewport={{ once: false }}
           transition={{ delay: 0.28 }}
-          whileHover={{
-            scale: 1.06,
-            transition: { duration: 0.12 },
-          }}
-          whileTap={{ scale: 0.97 }}
-          className="w-full rounded-2xl py-4 bg-white/10 border border-white/10 flex items-center justify-center gap-2"
+          style={{ textDecoration: 'none', display: 'block' }}
         >
-          <Send size={16} />
-          Send Message
-        </motion.button>
+          <motion.div
+            whileHover={{
+              scale: 1.06,
+              transition: { duration: 0.12 },
+            }}
+            whileTap={{ scale: 0.97 }}
+            className="w-full rounded-2xl py-4 bg-white/10 border border-white/10 flex items-center justify-center gap-2 cursor-pointer"
+          >
+            <Send size={16} />
+            Send Message
+          </motion.div>
+        </motion.a>
       </div>
 
       {/* SOCIAL */}
@@ -184,7 +190,7 @@ export default function ContactForm() {
 
         {/* LINKEDIN */} 
         <motion.a
-          href="https://www.linkedin.com/in/rifqimuhammadaliya/"  
+          href="https://www.linkedin.com/in/abdulla-chembarikka-b333ab417"
           target="_blank"
           rel="noopener noreferrer"
           variants={fieldVariants}

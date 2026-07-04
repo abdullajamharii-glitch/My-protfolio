@@ -8,6 +8,7 @@ export interface Project {
   key_features: string
   image_url: string
   image_urls: string[]
+  private?: boolean          // hides live link & Google details on detail page
   g_business_rating?: string
   g_business_address?: string
   g_business_phone?: string
@@ -49,5 +50,28 @@ export const staticProjects: Project[] = [
     g_business_phone: '+971 6 569 1925',
     g_business_map_url: 'https://maps.google.com/?q=Al+Beraimi+Cafeteria+Sharjah',
     g_business_desc: 'Sharjah\'s famous late-night cafeteria serving authentic Arabic grilled chicken, shawarma, and fresh juices since 1994.'
+  },
+  {
+    id: 'rajav-resort-admin-dashboard',
+    title: 'Rajav Resort Admin Dashboard',
+    description: 'A full-featured business management dashboard built exclusively for Rajav Beach Resort, Kochi. This internal admin panel allows the resort team to manage client bookings, track revenue, monitor occupancy rates, handle room availability, and maintain guest records — all from a single, intuitive interface. Designed to streamline day-to-day resort operations and reduce manual workload.',
+    live_url: null,
+    github_url: null,
+    private: true,
+    technologies: 'Next.js, React, TypeScript, Tailwind CSS, Supabase, Framer Motion, Chart.js, Lucide Icons',
+    key_features: 'Client Booking Management System, Real-Time Revenue & Occupancy Tracking, Guest Records & CRM Module, Room Availability Calendar, Business Analytics Dashboard with Charts, Role-Based Access Control, Fully Responsive Admin UI',
+    image_url: '/assets/rajav_resort_admin.png',
+    image_urls: ['/assets/rajav_resort_admin.png'],
+  },
+  {
+    id: 'noufu-weds-kubra',
+    title: 'Noufu Weds Kubra — Wedding Invitation',
+    description: 'A beautifully crafted digital wedding invitation website designed for the wedding of Noufu & Kubra. The site features an elegant romantic design with animated floral elements, couple introduction, ceremony & reception details, venue location, countdown timer, and a personal RSVP section. Built to give the couple and their guests a memorable and interactive online experience.',
+    live_url: 'https://noufu-weds-kubra.vercel.app/',
+    github_url: null,
+    technologies: 'Next.js, React, Tailwind CSS, Framer Motion, TypeScript, Lucide Icons',
+    key_features: 'Romantic Animated Wedding Design, Couple Introduction & Story Section, Ceremony & Reception Venue Details, Live Countdown Timer to Wedding Day, Interactive RSVP / Wishes Section, Fully Responsive for Mobile & Desktop',
+    image_url: '/assets/noufu_weds_kubra.png',
+    image_urls: ['/assets/noufu_weds_kubra.png'],
   }
 ]
