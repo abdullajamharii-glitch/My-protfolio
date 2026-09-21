@@ -20,6 +20,17 @@ export interface Project {
 
 export const staticProjects: Project[] = [
   {
+    id: 'billing-os',
+    title: 'Billing OS — Invoicing Platform',
+    description: 'A modern, professional billing and invoicing web platform built for seamless financial operations. Billing OS offers streamlined invoice creation, client directory management, payment status tracking, and multi-role access control for business owners and accountants.',
+    live_url: 'https://billing-os-fbdv.vercel.app/login?redirect=%2F',
+    github_url: null,
+    technologies: 'Next.js, React, Tailwind CSS, TypeScript, Lucide Icons, Glassmorphism UI, Financial Analytics, Role-Based Access Control',
+    key_features: 'Professional Invoice & Billing Generation, Real-Time Revenue & Outstanding Balance Analytics, Quick Demo Role Authentication (Owner & Accountant), Client Directory & Status Management, Payment & Due Date Tracking, Responsive Glassmorphic Dark UI',
+    image_url: '/assets/billing_os.png',
+    image_urls: ['/assets/billing_os.png'],
+  },
+  {
     id: 'fried-zone',
     title: 'Fried Zone Kasaragod',
     description: 'The official modern web application for Fried Zone in Rahmath Nagar, Chengala, Kasaragod. Specializing in freshly hand-breaded halal fried chicken, signature spicy Kanthari combo meals, loaded burgers, wraps, and creamy thick shakes. Features instant table reservations, category-filtered menu browsing, Google Maps directions, and direct WhatsApp / delivery integrations.',

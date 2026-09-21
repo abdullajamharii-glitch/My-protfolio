@@ -8,10 +8,20 @@ import {
   Megaphone,
   Flame,
   Layers,
-  Library
+  Library,
+  FileText
 } from 'lucide-react'
 
 const companies = [
+  {
+    name: 'Billing OS',
+    role: 'Cloud Invoicing Platform',
+    location: 'SaaS Platform',
+    icon: FileText,
+    color: 'rgba(234, 88, 12, 0.1)',
+    iconColor: '#ea580c',
+    shadowGlow: 'rgba(234, 88, 12, 0.15)',
+  },
   {
     name: 'Rajav Beach Resort',
     role: 'Web Development & SEO',
