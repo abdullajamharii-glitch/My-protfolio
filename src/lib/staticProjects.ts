@@ -20,6 +20,44 @@ export interface Project {
 
 export const staticProjects: Project[] = [
   {
+    id: 'fried-zone',
+    title: 'Fried Zone Kasaragod',
+    description: 'The official modern web application for Fried Zone in Rahmath Nagar, Chengala, Kasaragod. Specializing in freshly hand-breaded halal fried chicken, signature spicy Kanthari combo meals, loaded burgers, wraps, and creamy thick shakes. Features instant table reservations, category-filtered menu browsing, Google Maps directions, and direct WhatsApp / delivery integrations.',
+    live_url: 'https://fried-zone-site.vercel.app/',
+    github_url: null,
+    technologies: 'Next.js, React, Tailwind CSS, TypeScript, Lucide Icons, SEO Architecture, WhatsApp API, Zomato & Swiggy Integrations',
+    key_features: 'Crispy Halal Fried Chicken & Kanthari Special Showcase, Instant Table Reservation System, Direct WhatsApp & Phone Ordering Integration, Swiggy & Zomato Delivery Channel Links, Interactive Category-wise Food Filter, Google Maps Local Business & Directions Integration, Fully Responsive Mobile-First Design',
+    image_url: '/assets/fried_zone.png',
+    image_urls: ['/assets/fried_zone.png'],
+    g_business_rating: '4.9/5',
+    g_business_address: 'Rahmath Nagar, Chengala, Kasaragod, Kerala 671541, India',
+    g_business_phone: '+91 79093 03909',
+    g_business_map_url: 'https://share.google/IgpcAtIpeB0I3IdT6',
+    g_business_desc: 'Kasaragod\'s premier halal fried chicken destination known for its signature Kanthari combos, crispy burgers, and free 5 KM delivery.'
+  },
+  {
+    id: 'madrasa-fest-portal',
+    title: 'FestOS — Madrasa Arts Fest Portal',
+    description: 'An all-in-one, high-performance web portal and real-time dashboard built for Madrasa Arts Festivals. FestOS simplifies festival administration with multi-stage programme scheduling, candidate registration, printable score sheets, and automated certificate generation, while providing attendees with live scoreboards, stage progress trackers, and real-time point tables.',
+    live_url: 'https://madrasa-fest-portal.vercel.app/',
+    github_url: null,
+    technologies: 'React, Vite, Supabase, Tailwind CSS, Recharts, XLSX Export, PDF Printing, Realtime Subscriptions',
+    key_features: 'Live Festival Scoreboard & Point Table, Candidate & Programme Registration Management, Multi-Stage Real-Time Scheduling, Printable Score Sheets & PDF Certificates, Excel (.xlsx) Import & Export Support, Public Result Portal with Instant Search, Role-Based Jury & Admin Workflows',
+    image_url: '/assets/fest_os.png',
+    image_urls: ['/assets/fest_os.png']
+  },
+  {
+    id: 'cm-ushtad-archive',
+    title: 'CM Usthad Archive & Legacy',
+    description: 'A scholarly, elegant digital archive and educational portal dedicated to preserving the life, works, and intellectual legacy of CM Usthad (C. M. Abdulla Moulavi). The platform features an in-depth biographical journey, historical milestone timeline, catalogued library of rare books and treatises, research publications, historical case records, and community tributes.',
+    live_url: 'https://cm-ushtad-site.vercel.app/',
+    github_url: null,
+    technologies: 'HTML5, Modern CSS3, JavaScript, Responsive Typography, Digital Archive Architecture, Media Gallery',
+    key_features: 'Comprehensive Scholarly Biography & Life Journey, Interactive Historical Milestones Timeline, Digital Archive of Rare Books & Theological Treatises, Academic Articles & Research Publication Index, Historical Case Records & Legal Documentation, High-Resolution Media Gallery & Institutional Legacy',
+    image_url: '/assets/cm_usthad.png',
+    image_urls: ['/assets/cm_usthad.png']
+  },
+  {
     id: 'rajav-beach-resort',
     title: 'Rajav Beach Resort',
     description: 'A premium, luxury beachfront resort website located at Cherai Beach in Kochi, Kerala. The website showcases the resort\'s direct beach access, stunning beachfront infinity pool, signature room categories (Jacuzzi Rooms, Premium Beach View Rooms), and event bookings. It features a modern, elegant design with smooth scrolling, beautiful animations, and full responsiveness to reflect the luxury experience of the destination.',

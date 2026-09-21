@@ -6,9 +6,9 @@ import {
   Palmtree,
   Utensils,
   Megaphone,
-  GraduationCap,
-  BookOpen,
-  Heart
+  Flame,
+  Layers,
+  Library
 } from 'lucide-react'
 
 const companies = [
@@ -22,6 +22,15 @@ const companies = [
     shadowGlow: 'rgba(52, 211, 153, 0.15)',
   },
   {
+    name: 'Fried Zone',
+    role: 'Web Application & SEO',
+    location: 'Kasaragod, Kerala',
+    icon: Flame,
+    color: 'rgba(239, 68, 68, 0.1)',
+    iconColor: '#ef4444',
+    shadowGlow: 'rgba(239, 68, 68, 0.15)',
+  },
+  {
     name: 'Al Beraimi Cafeteria',
     role: 'Food Menu Portal & SEO',
     location: 'Sharjah, UAE',
@@ -32,7 +41,7 @@ const companies = [
   },
   {
     name: 'AJ School of Ad',
-    role: 'Digital Marketing Intern',
+    role: 'Digital Marketing & Strategy',
     location: 'Kanhangad, Kerala',
     icon: Megaphone,
     color: 'rgba(244, 114, 182, 0.1)',
@@ -40,31 +49,22 @@ const companies = [
     shadowGlow: 'rgba(244, 114, 182, 0.15)',
   },
   {
-    name: 'Calicut University',
-    role: 'BA English Literature',
-    location: 'Calicut, Kerala',
-    icon: GraduationCap,
+    name: 'FestOS Portal',
+    role: 'SaaS & Event Management',
+    location: 'Kerala, India',
+    icon: Layers,
     color: 'rgba(167, 139, 250, 0.1)',
     iconColor: '#a78bfa',
     shadowGlow: 'rgba(167, 139, 250, 0.15)',
   },
   {
-    name: 'Darul Huda University',
-    role: 'Academic PG Studies',
-    location: 'Malappuram, Kerala',
-    icon: BookOpen,
+    name: 'CM Usthad Archive',
+    role: 'Digital Archive Platform',
+    location: 'Kerala, India',
+    icon: Library,
     color: 'rgba(56, 189, 248, 0.1)',
     iconColor: '#38bdf8',
     shadowGlow: 'rgba(56, 189, 248, 0.15)',
-  },
-  {
-    name: 'Noufu Weds Kubra',
-    role: 'Digital Wedding Design',
-    location: 'Vercel App',
-    icon: Heart,
-    color: 'rgba(239, 68, 68, 0.1)',
-    iconColor: '#ef4444',
-    shadowGlow: 'rgba(239, 68, 68, 0.15)',
   },
 ]
 
@@ -83,10 +83,10 @@ export default function Companies() {
           className="text-center md:text-left"
         >
           <span className="font-mono text-xs uppercase tracking-[0.25em] text-white/35 mb-2 block">
-            COLLABORATIONS & MILESTONES
+            COLLABORATIONS & CLIENTS
           </span>
           <h2 className="text-xl md:text-2xl font-bold tracking-tight text-white/85">
-            Companies & Institutions I Work With
+            Companies & Clients I Work With
           </h2>
         </motion.div>
       </div>

@@ -21,16 +21,17 @@ import { hasPlayedIntro, setIntroPlayed } from '@/lib/introState'
 
 export default function Home() {
   const [showWelcome, setShowWelcome] = useState(false)
-  const [showApp, setShowApp] = useState(true)
+  // appVisible: controls CSS opacity — App stays mounted the whole time
+  const [appVisible, setAppVisible] = useState(true)
 
   useEffect(() => {
     const currentHash = window.location.hash
     const pathname = window.location.pathname
 
-    // kalau balik dari detail ke portfolio
+    // coming back from portfolio detail page
     if (currentHash === '#portfolio') {
       setShowWelcome(false)
-      setShowApp(true)
+      setAppVisible(true)
       return
     }
 
@@ -42,7 +43,6 @@ export default function Home() {
 
     const isReload = navigationType === 'reload'
 
-    // hanya homepage yang reset intro
     if (isReload && pathname === '/') {
       sessionStorage.removeItem('introPlayed')
       sessionStorage.removeItem('heroPlayed')
@@ -51,26 +51,25 @@ export default function Home() {
         history.replaceState(null, '', '/')
       }
 
-      window.scrollTo({
-        top: 0,
-        behavior: 'instant',
-      })
+      window.scrollTo({ top: 0, behavior: 'instant' })
     }
 
     if (!hasPlayedIntro()) {
+      // Show welcome, hide main content visually (but keep App mounted to warm up GPU)
       setShowWelcome(true)
-      setShowApp(false)
+      setAppVisible(false)
 
       const timer = setTimeout(() => {
         setShowWelcome(false)
-        setShowApp(true)
+        // Slight delay before revealing so the welcome exit animation leads cleanly
+        setTimeout(() => setAppVisible(true), 200)
         setIntroPlayed()
       }, 2800)
 
       return () => clearTimeout(timer)
     } else {
       setShowWelcome(false)
-      setShowApp(true)
+      setAppVisible(true)
     }
   }, [])
 
@@ -78,9 +77,18 @@ export default function Home() {
     <main style={{ position: 'relative', overflow: 'hidden' }}>
       <AnimatedBackground />
 
-      <div style={{ position: 'relative', zIndex: 2 }}>
+      {/* Main content — always mounted, opacity driven so 3D canvas warms up silently */}
+      <div
+        style={{
+          position: 'relative',
+          zIndex: 2,
+          opacity: appVisible ? 1 : 0,
+          transition: appVisible ? 'opacity 0.6s ease' : 'none',
+          pointerEvents: appVisible ? 'auto' : 'none',
+        }}
+      >
         <Navbar />
-        <Hero showApp={showApp} />
+        <Hero showApp={true} />
         <About />
         <Companies />
         <Services />
@@ -100,11 +108,6 @@ export default function Home() {
             initial={{ y: 0 }}
             animate={{ y: 0 }}
             exit={{ y: '-100%' }}
-            onAnimationStart={(definition) => {
-              if (definition === 'exit') {
-                setShowApp(true)
-              }
-            }}
             transition={{
               duration: 1.2,
               ease: [0.76, 0, 0.24, 1],
@@ -121,4 +124,4 @@ export default function Home() {
       </AnimatePresence>
     </main>
   )
-}
+}

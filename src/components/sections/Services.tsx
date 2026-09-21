@@ -8,22 +8,37 @@ import {
   Share2,
   Target,
   Smartphone,
-  CheckCircle2
+  CheckCircle2,
+  Palette
 } from 'lucide-react'
 
 const services = [
   {
     title: 'Web Development',
-    description: 'Building blazing-fast, responsive web applications using modern technology.',
+    description: 'Building blazing-fast web applications, custom ERP & POS systems, and scalable digital solutions.',
     details: [
       'Next.js & React Applications',
+      'POS & ERP Business Solutions',
       'Tailwind CSS & Modern UI',
-      'Speed & Core Web Vitals optimization',
-      'CMS & Custom Admin Panels'
+      'Custom Admin Panels & Dashboards',
+      'Speed & Core Web Vitals optimization'
     ],
     icon: Code2,
     color: '#34d399',
     glow: 'rgba(52, 211, 153, 0.12)',
+  },
+  {
+    title: 'Web Designing',
+    description: 'Crafting visually stunning, intuitive user interfaces and modern digital experiences tailored to your brand.',
+    details: [
+      'UI/UX Design & Interactive Prototypes',
+      'Responsive & Mobile-First Layouts',
+      'Design Systems & Component Styling',
+      'Wireframing & Brand Visual Identity'
+    ],
+    icon: Palette,
+    color: '#ec4899',
+    glow: 'rgba(236, 72, 153, 0.12)',
   },
   {
     title: 'Search Engine Optimization (SEO)',
