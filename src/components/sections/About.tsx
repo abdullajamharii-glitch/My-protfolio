@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { motion, Variants } from "framer-motion";
 import { Code, Award, Globe, FileText, ArrowUpRight } from "lucide-react";
 import { supabase } from "@/lib/supabase";
@@ -254,10 +255,8 @@ export default function About() {
               }}
             >
               {/* DOWNLOAD CV */}
-              <a
-                href="https://drive.google.com/file/d/1cFqZ0TY0U0I51K0Tchv8E4sbOv5yAZ9x/view?usp=drive_link"
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/404"
                 style={{ textDecoration: "none" }}
               >
                 <button
@@ -288,7 +287,7 @@ export default function About() {
                   <FileText size={14} />
                   Download CV
                 </button>
-              </a>
+              </Link>
 
               {/* VIEW PROJECTS */}
               <button
